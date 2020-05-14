@@ -8,7 +8,7 @@ before_install:
 
 script:
     - docker run -e CI=true vlad/react-test echo "Test"
-    echo "hello"
+    
 after_success:
     - docker build -t vlad/multi-client ./client
     - docker build -t vlad/multi-nginx ./nginx
