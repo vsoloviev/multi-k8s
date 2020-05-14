@@ -4,20 +4,20 @@ services:
     - docker
 
 before_install:
-    - docker build -t vlad/react-test -f ./client/Dockerfile ./client
+    - docker build -t vsoloviev/react-test -f ./client/Dockerfile ./client
 
 script:
-    - docker run -e CI=true vlad/react-test echo "Test"
-    
+    - docker run -e CI=true vsoloviev/react-test echo "Test"
+
 after_success:
-    - docker build -t vlad/multi-client ./client
-    - docker build -t vlad/multi-nginx ./nginx
-    - docker build -t vlad/multi-server ./server
-    - docker build -t vlad/multi-worker ./worker
+    - docker build -t vsoloviev/multi-client ./client
+    - docker build -t vsoloviev/multi-nginx ./nginx
+    - docker build -t vsoloviev/multi-server ./server
+    - docker build -t vsoloviev/multi-worker ./worker
 #Login to DockerHub
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 #Take images to Docker Hub
-    - docker push vlad/multi-client
-    - docker push vlad/multi-nginx
-    - docker push vlad/multi-server
-    - docker push vlad/multi-worker
+    - docker push vsoloviev/multi-client
+    - docker push vsoloviev/multi-nginx
+    - docker push vsoloviev/multi-server
+    - docker push vsoloviev/multi-worker
