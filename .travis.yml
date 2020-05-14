@@ -15,7 +15,7 @@ after_success:
     - docker build -t vlad/multi-server ./server
     - docker build -t vlad/multi-worker ./worker
 #Login to DockerHub
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin0
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 #Take images to Docker Hub
     - docker push vlad/multi-client
     - docker push vlad/multi-nginx
