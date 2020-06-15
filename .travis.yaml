@@ -4,7 +4,7 @@ services:
 
 env:
     global:
-        - SHA=$(git rev-parse HEAD)
+        - SHA=${git rev-parse HEAD}
         - CLOUDSKD_CORE_DISABLE_PROMPTS=1
 
 before_install:
@@ -17,10 +17,10 @@ before_install:
     - gcloud config set compute/zone us-central1-c
     - gcloud container clusters get-credentials multi-cluster
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker build -t vsoloviev/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true vsoloviev/react-test npm run test
+    - docker run -e CI=true stephengrider/react-test npm run test
 
 
 deploy:
